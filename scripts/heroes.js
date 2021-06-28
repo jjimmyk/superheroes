@@ -48,4 +48,58 @@ function populateHeader(jsonObj) {
   header.appendChild(myPara);
 }
   
+
+function showHeroes(jsonObj) {
+  
+  //define variable heroes equal to the array that contains the members.
+  const heroes = jsonObj['members'];
+  
+  //Loop through the heroes object array.
+  //Add the info of each hero, one at a time.
+  for(let i = 0; i < heroes.length; i++) {
+    
+    //We must create the HTML objects so they appear in the HTML file.
+    //Create HTML element article.  This element will hold all of the hero's info.
+    const myArticle = document.createElement('article');
+    
+    //Create an h2 heading for the hero's name
+    const myH2 = document.createElement('h2');
+    
+    //Create a paragraph for the hero's secret identity, age, and superpowers.
+    const myPara1 = document.createElement('p');
+    const myPara2 = document.createElement('p');
+    const myPara3 = document.createElement('p');
+    
+    //Create an unordered list to contain hero's superpowers, because there are multiple for each hero.
+    const myList = document.createElement('ul');
+    
+    //Grab the hero's name, secret id, age, and superpowers, and populate the relevant HTML elements with them.
+    myH2.textContent = heroes[i].name;
+    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+    myPara2.textContent = 'Age: ' + heroes[i].age;
+    myPara3.textContent = 'Superpowers: ';
+    
+    // Grab the array that contains the hero's superpowers
+    const superPowers = heroes[i].powers;
+    
+    //Loop through the array containing powers, grabbing each power and adding it to myList.
+    for (let j = 0; j < superPowers.length; j++) {
+      const listItem = document.createElement('li');
+      listItem.textContent = superPowers[j];
+      myList.appendChild(listItem);
+    }
+    
+    // Add the HTML objects in the order that they will appear in HTML article
+    myArticle.appendChild(myH2);
+    myArticle.appendChild(myPara1);
+    myArticle.appendChild(myPara2);
+    myArticle.appendChild(myPara3);
+    myArticle.appendChild(myList);
+    
+    //Add myArticle to the HTML file.
+    section.appendChild(myArticle);
+  }
+}
+    
+
   
