@@ -29,3 +29,23 @@ request.onload = function() {
 }
 
 
+function populateHeader(jsonObj) {
+  //create a h1 HTML element
+  const myH1 = document.createElement('h1');
+  //Set the text value to superhero squad 
+  //by grabbing the json object value that corresponds to squadName
+  myH1.textContent = jsonObj['squadName'];
+  //add myH1 to the header
+  header.appendChild(myH1);
+  
+  //create a p element
+  const myPara = document.createElement('p');
+  
+  //set the value of myPara to display the hometown and data formed of the relevant object.
+  myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+  
+  //Add myPara to the HTML file.
+  header.appendChild(myPara);
+}
+  
+  
